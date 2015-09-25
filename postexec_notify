@@ -42,7 +42,7 @@ fi
 function preexec() { SECONDS_WHEN_LAST_COMMAND_WAS_EXECUTED=$SECONDS; LAST_EXECUTED_COMMAND=$1; }
 function precmd() {
 	if [[ $((SECONDS - SECONDS_WHEN_LAST_COMMAND_WAS_EXECUTED)) -gt $NOTIFICATION_SECONDS_TRESHOLD ]]; then
-		/bin/bash "$WORKING_DIR"/play_sound
+		/bin/bash "$WORKING_DIR"/notify_after_command_executed/play_sound
 		notify-send -i terminal "Execution is finished" "$LAST_EXECUTED_COMMAND"
 	fi
 }
